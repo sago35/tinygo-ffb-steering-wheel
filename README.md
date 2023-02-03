@@ -14,8 +14,6 @@ TinyGo 用のコードを置く予定。
 | M5 x 30mm | 2 |
 | [タクトスイッチ](https://akizukidenshi.com/catalog/g/gP-01282/) | 2 |
 
-* [./models/paddle_shifter/](./models/paddle_shifter)
-
 ![](./images/body.png)
 
 ![](./images/lever.png)
