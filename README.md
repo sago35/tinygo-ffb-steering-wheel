@@ -4,7 +4,7 @@ TinyGo 用のコードを置く予定。
 
 ## paddle shifter
 
-[SWITCHSCIENCE/DIY-FFB-Wheel](https://github.com/SWITCHSCIENCE/DIY-FFB-Wheel) にパドルシフターを追加するためのものです。  
+[SWITCHSCIENCE/DIY-FFB-Wheel](https://github.com/SWITCHSCIENCE/DIY-FFB-Wheel) のステアリング部にパドルシフターを追加するためのものです。  
 必要なものは以下の通り。  
 
 | パーツ | 必要個数 |
