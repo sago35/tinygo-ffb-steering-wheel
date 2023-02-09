@@ -10,7 +10,7 @@ TinyGo 用のコードを置く予定。
 | パーツ | 必要個数 |
 | -- | -- |
 | [./models/paddle_shifter/](body.stl) | 1 |
-| [./models/paddle_shifter/](lever.stl) | 1 |
+| [./models/paddle_shifter/](lever.stl) | 2 |
 | M5 x 30mm | 2 |
 | [タクトスイッチ](https://akizukidenshi.com/catalog/g/gP-01282/) | 2 |
 
