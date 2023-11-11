@@ -12,19 +12,19 @@ import (
 )
 
 const (
-	// for picossci-can pins
-	LED1      machine.Pin = 25
-	LED2      machine.Pin = 14
-	LED3      machine.Pin = 15
-	SW1       machine.Pin = 24
-	SW2       machine.Pin = 23
-	SW3       machine.Pin = 22
-	CAN_INT   machine.Pin = 16
-	CAN_RESET machine.Pin = 17
+	// for feather-rp2040 pins
+	LED1      machine.Pin = machine.NoPin
+	LED2      machine.Pin = machine.NoPin
+	LED3      machine.Pin = machine.NoPin
+	SW1       machine.Pin = machine.NoPin
+	SW2       machine.Pin = machine.NoPin
+	SW3       machine.Pin = machine.NoPin
+	CAN_INT   machine.Pin = machine.NoPin
+	CAN_RESET machine.Pin = machine.NoPin
 	CAN_SCK   machine.Pin = 18
 	CAN_TX    machine.Pin = 19
 	CAN_RX    machine.Pin = 20
-	CAN_CS    machine.Pin = 21
+	CAN_CS    machine.Pin = 7
 )
 
 var (
