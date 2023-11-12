@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"machine"
 	"time"
@@ -9,6 +10,7 @@ import (
 	"tinygo.org/x/drivers/mcp2515"
 
 	"github.com/SWITCHSCIENCE/ffb_steering_controller/control"
+	"github.com/SWITCHSCIENCE/ffb_steering_controller/motor"
 )
 
 const (
@@ -68,9 +70,38 @@ func main() {
 	if err := can.Begin(mcp2515.CAN500kBps, mcp2515.Clock8MHz); err != nil {
 		log.Fatal(err)
 	}
+
+	motor.SetNeutralAdjust(1600)
+
 	js := control.NewWheel(can)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	machine.InitADC()
+	//accel := NewADCDevice(machine.A1, 8, 0x1E00, 0x3480)
+	accel := NewADCDevice(machine.A1, 8, 0x2A00, 0x3480)
+	brake := NewADCDevice(machine.A0, 8, 0xE380, 0xF600)
+
+	go func() {
+		tick := time.NewTicker(10 * time.Millisecond)
+		cnt := 0
+		for {
+			select {
+			case <-tick.C:
+				// ここに自分の実装を書く
+				js.SetAxis(2, int(accel.Get()))
+				js.SetAxis(4, int(brake.Get()))
+
+				if false && (cnt%50) == 0 {
+					fmt.Printf("%04X %04X : %04X %04X\n",
+						accel.RawValue, accel.Value,
+						brake.RawValue, brake.Value,
+					)
+				}
+				cnt++
+			}
+		}
+	}()
 	for {
 		if err := js.Loop(ctx); err != nil {
 			log.Print(err)
