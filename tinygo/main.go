@@ -10,7 +10,7 @@ import (
 	"tinygo.org/x/drivers/mcp2515"
 
 	"github.com/SWITCHSCIENCE/ffb_steering_controller/control"
-	"github.com/SWITCHSCIENCE/ffb_steering_controller/motor"
+	"github.com/SWITCHSCIENCE/ffb_steering_controller/settings"
 )
 
 const (
@@ -52,6 +52,10 @@ func init() {
 }
 
 func main() {
+	s := settings.Get()
+	s.NeutralAdjust = 20
+	settings.Update(s)
+
 	LED1.Low()
 	log.SetFlags(log.Lmicroseconds)
 	if err := spi.Configure(
@@ -71,16 +75,18 @@ func main() {
 		log.Fatal(err)
 	}
 
-	motor.SetNeutralAdjust(1600)
-
 	js := control.NewWheel(can)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
+
+	//js.SetNeutralAdjust(-30)
 
 	machine.InitADC()
 	//accel := NewADCDevice(machine.A1, 8, 0x1E00, 0x3480)
 	accel := NewADCDevice(machine.A1, 8, 0x2A00, 0x3480)
 	brake := NewADCDevice(machine.A0, 8, 0xE380, 0xF600)
+
+	uartButtons := NewUARTDevice()
 
 	go func() {
 		tick := time.NewTicker(10 * time.Millisecond)
@@ -91,6 +97,22 @@ func main() {
 				// ここに自分の実装を書く
 				js.SetAxis(2, int(accel.Get()))
 				js.SetAxis(4, int(brake.Get()))
+
+				btn := uartButtons.Get()
+				js.SetButton(2, (btn&0x0008) > 0)
+				js.SetButton(3, (btn&0x0004) > 0)
+				js.SetButton(4, (btn&0x8000) > 0)
+				js.SetButton(5, (btn&0x4000) > 0)
+				js.SetButton(6, (btn&0x2000) > 0)
+				js.SetButton(7, (btn&0x1000) > 0)
+				js.SetButton(8, (btn&0x0800) > 0)
+				js.SetButton(9, (btn&0x0400) > 0)
+				js.SetButton(10, (btn&0x0200) > 0)
+				js.SetButton(11, (btn&0x0100) > 0)
+				js.SetButton(12, (btn&0x0080) > 0)
+				js.SetButton(13, (btn&0x0040) > 0)
+				js.SetButton(14, (btn&0x0020) > 0)
+				js.SetButton(15, (btn&0x0010) > 0)
 
 				if false && (cnt%50) == 0 {
 					fmt.Printf("%04X %04X : %04X %04X\n",
