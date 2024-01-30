@@ -83,8 +83,8 @@ func main() {
 
 	machine.InitADC()
 	//accel := NewADCDevice(machine.A1, 8, 0x1E00, 0x3480)
-	accel := NewADCDevice(machine.A1, 8, 0x2A00, 0x3480)
-	brake := NewADCDevice(machine.A0, 8, 0xE380, 0xF600)
+	accel := NewADCDevice(machine.A1, 8, 0x2A00, 0x3480, true)
+	brake := NewADCDevice(machine.A0, 8, 0xE380, 0xF600, false)
 
 	uartButtons := NewUARTDevice()
 
