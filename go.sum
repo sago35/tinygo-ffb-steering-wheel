@@ -1,5 +1,9 @@
 github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20231110121445-864581fd57f3 h1:UQs/My1BVuWI+YumNGKadFcYnEwzcdciQQQ0THvD/kA=
 github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20231110121445-864581fd57f3/go.mod h1:2zBr/+/CBsq3AqHhLkmF/LlVCJSu0Y8vtiaf+UfKnw4=
+github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20231112145050-93c76de0c67f h1:V9md1WxJvBOet0X3bggAF+WTVfVgNHnF4+151ROVJ3A=
+github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20231112145050-93c76de0c67f/go.mod h1:2zBr/+/CBsq3AqHhLkmF/LlVCJSu0Y8vtiaf+UfKnw4=
+github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20240906044605-97e9d9afc30d h1:UKCFo6eqt6A2nzo3vbpgVR485XFW7sa2AbSGNj2nr0s=
+github.com/SWITCHSCIENCE/ffb_steering_controller v0.0.0-20240906044605-97e9d9afc30d/go.mod h1:2zBr/+/CBsq3AqHhLkmF/LlVCJSu0Y8vtiaf+UfKnw4=
 github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 h1:El6M4kTTCOh6aBiKaUGG7oYTSPP8MxqL4YI3kZKwcP4=
 github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510/go.mod h1:pupxD2MaaD3pAXIBCelhxNneeOaAeabZDe5s4K6zSpQ=
 tinygo.org/x/drivers v0.26.0 h1:7KSIYssX0ki0dd7yBYkVZWSG0kt8vrZNS0It73TymcA=
